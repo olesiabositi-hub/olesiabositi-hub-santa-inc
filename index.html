@@ -717,19 +717,15 @@ function initMap(){
   // подписи
   const L=(html,x,y,z,fn)=>{const el=document.createElement('button');el.className='lb';el.innerHTML=html;if(fn){el.addEventListener('click',e=>{e.stopPropagation();fn()});el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')fn()})}else el.tabIndex=-1;$('#labels').appendChild(el);labelEls.push({el,v:new THREE.Vector3(x,y,z)})};
   const T=k=>()=>tip(...TIPS[k]);
-  L('<span class="lb-d big">Сосулечная долина</span>',0,30,-150,T('valley'));
+  L('<span class="lb-d big">Сосулечная долина</span>',-150,22,-60,T('valley'));
   L('<span class="lb-d">Пало-Холодно</span>',HQ.x+14,1,HQ.z+10,T('palo'));
   L('<span class="lb-d">Маунтин-Брррр</span>',64,1,48,T('mount'));
   L('<span class="lb-d">Снежная горка</span>',-55,1,48,T('hill'));
   L('<span class="lb-d water">Озеро Бэклог</span>',-48,1,-38,T('lake'));
   L('<span class="lb-d park">Лес Легаси</span>',52,7,-46,T('forest'));
   L('<span class="lb-st">РУДОЛЬФ-ШТРАССЕ</span>',-62,1,25,T('rud'));
-  L('<span class="plate dark">Гараж</span>',-6,4,40,T('garage'));
-  L('<span class="plate dark">За ёлкой</span>',-12,5,-16);
-  L('<span class="plate white"><b>С1</b>Сани №1</span>',-38,4,8);
-  L('<span class="plate pill">Упаковано 52%</span>',24,7,-18);
+  L('<span class="lb-d">Гараж</span>',-6,1,40,T('garage'));
   L('<span class="jam"><b>10</b></span>',30,1,15.5,T('rud'));
-  NBS.forEach(([n,t,s,x,z])=>L(`<span class="lb-n"><i></i>${n}</span>`,x,6,z,()=>tip(n,t,s)));
   labelEls.push({el:$('#pin'),v:new THREE.Vector3(HT.x,HT.h+11,HT.z),pin:true});
   mapResize();bindMapDrag();requestAnimationFrame(mapLoop);
 }
